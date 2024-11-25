@@ -365,7 +365,7 @@ class PyriJogComponent(PyriVue):
                 for e in e_state:
                     if e.type == "com.robotraconteur.robotics.robot.RobotState":
                         
-                        current_rpy = np.array2string(np.rad2deg(R2rpy(q2R(np.array([e.state_data.kin_chain_tcp[0][0][x] for x in range(4)],dtype=np.float64)))),formatter={'float_kind':lambda x: "%.2f" % x})
+                        current_rpy = np.array2string(np.rad2deg(R2rpy(q2R(np.array([e.state_data.data.kin_chain_tcp[0][0][x] for x in range(4)],dtype=np.float64)))),formatter={'float_kind':lambda x: "%.2f" % x})
         except AttributeError:
             #traceback.print_exc()
             pass
@@ -387,7 +387,7 @@ class PyriJogComponent(PyriVue):
             if e_state is not None:
                 for e in e_state:
                     if e.type == "com.robotraconteur.robotics.robot.RobotState":
-                        current_position = np.array2string(np.array([e.state_data.kin_chain_tcp[0][1][x] for x in range(3)],dtype=np.float64), formatter={'float_kind':lambda x: "%.2f" % x})
+                        current_position = np.array2string(np.array([e.state_data.data.kin_chain_tcp[0][1][x] for x in range(3)],dtype=np.float64), formatter={'float_kind':lambda x: "%.2f" % x})
         except AttributeError:
             #traceback.print_exc()
             pass
